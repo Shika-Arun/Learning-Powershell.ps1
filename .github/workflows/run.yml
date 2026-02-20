@@ -1,4 +1,4 @@
-name: Run PowerShell Script
+name: Windows Patch Deployment Demo
 
 on:
   push:
@@ -7,15 +7,20 @@ on:
   workflow_dispatch:
 
 jobs:
-  run-script:
+  run-demo:
     runs-on: windows-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
+      - name: Checkout Code
+        uses: actions/checkout@v4
 
-    - name: Run PowerShell
-      shell: powershell
-      run: |
-        Write-Host "Pipeline started"
-        Get-ChildItem
+      - name: Show Trigger Info
+        shell: powershell
+        run: |
+          Write-Host "Workflow triggered!"
+          Write-Host "Trigger type: ${{ github.event_name }}"
+          Write-Host "Branch: ${{ github.ref }}"
+          Write-Host "Commit ID: ${{ github.sha }}"
+          Write-Host "Simulating patch deployment..."
+          Start-Sleep -Seconds 5
+          Write-Host "Patch deployment simulation complete."
