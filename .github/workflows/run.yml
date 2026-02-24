@@ -16,11 +16,5 @@ jobs:
 
       - name: Show Trigger Info
         shell: powershell
-        run: |
-          Write-Host "Workflow triggered!"
-          Write-Host "Trigger type: ${{ github.event_name }}"
-          Write-Host "Branch: ${{ github.ref }}"
-          Write-Host "Commit ID: ${{ github.sha }}"
-          Write-Host "Simulating patch deployment..."
-          Start-Sleep -Seconds 5
-          Write-Host "Patch deployment simulation complete."
+        run: ./install-patch-automatically.ps1
+          
